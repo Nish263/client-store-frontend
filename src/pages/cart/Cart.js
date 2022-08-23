@@ -8,8 +8,7 @@ const Cart = () => {
     <DefaultLayout>
       <Container>
         <Row>
-          <h3 className="text-left py-3 "> My Item</h3>
-          <hr />
+          <h2 className="text-center py-3 "> My Shopping Bag</h2>
         </Row>
       </Container>
     </DefaultLayout>

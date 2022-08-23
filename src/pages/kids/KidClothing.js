@@ -5,24 +5,29 @@ import { Container, Row, Col } from "react-bootstrap";
 import CustomCard from "../../component/CustomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductAction } from "../../component/products/productsAction";
+import { Link } from "react-router-dom";
 
 const dummydata = [
   {
+    _id: 1,
     img: KidsClothing,
     name: "dress",
     price: "$25",
   },
   {
+    _id: 2,
     img: KidsClothing,
     name: "dress",
     price: "$25",
   },
   {
+    _id: 3,
     img: KidsClothing,
     name: "dress",
     price: "$25",
   },
   {
+    _id: 4,
     img: KidsClothing,
     name: "dress",
     price: "$25",
@@ -31,7 +36,7 @@ const dummydata = [
 const KidClothing = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
-  const [allProducts, setAllProducts] = useState();
+  // const [allProducts, setAllProducts] = useState();
 
   useEffect(() => {
     dispatch(fetchProductAction());
@@ -40,16 +45,18 @@ const KidClothing = () => {
   return (
     <DefaultLayout>
       <Container>
-        {/* <Row className="g-3">
+        <Row className="g-3">
           {dummydata.map((item) => (
             <Col className=" ">
-              <CustomCard item={item} />
+              <Link className="nav-link" to={`/products-view/${item._id}`}>
+                <CustomCard item={item} />
+              </Link>
             </Col>
           ))}
-        </Row> */}
-        <div>
+        </Row>
+        {/* <div>
           <CustomCard products={products} />
-        </div>
+        </div> */}
       </Container>
     </DefaultLayout>
   );

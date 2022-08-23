@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { DefaultLayout } from "../../Layout/DefaultLayout";
 import { Container } from "react-bootstrap";
+import { setAddToCartItem } from "../../pages/cart/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const products = [
   {
@@ -21,16 +23,23 @@ const products = [
 
 const ProductLandingPage = () => {
   const [imageIndex, setImageIndex] = useState(0);
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
+  const { cart } = useSelector((state) => state.cart);
+  console.log(cart);
   const handleTabClick = (index) => {
     setImageIndex(index);
   };
 
-  const handleOnClick = (item) => {
-    cart.push(item);
-    console.log(cart);
+  // const handleOnClick = (item) => {
+  //   cart.push(item);
+  //   console.log(cart);
+  // };
+
+  const handleOnAddToCart = (product) => {
+    dispatch(setAddToCartItem(product));
   };
   return (
     <DefaultLayout className="prodView">
@@ -59,11 +68,13 @@ const ProductLandingPage = () => {
                     onClick={() => handleTabClick(index)}
                   />
                 ))}
+                <button
+                  onClick={() => handleOnAddToCart(item)}
+                  className="addCart"
+                >
+                  Add to cart
+                </button>
               </div>
-
-              <button onClick={() => handleOnClick(item)} className="addCart">
-                Add to cart
-              </button>
             </div>
           </div>
         ))}

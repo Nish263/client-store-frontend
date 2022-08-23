@@ -14,6 +14,10 @@
   max-height: 60vh;
 }
 
+h1 {
+  color: rgb(242, 87, 123);
+}
+
 .popular-image img {
   border-radius: 50%;
 }

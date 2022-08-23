@@ -22,7 +22,9 @@ const PopularCollections = () => {
   return (
     <Container>
       <Row>
-        <h5 className="fw-bold mb-4 py-3 fs-2">Popular Collections</h5>
+        <h5 className="fw-bold mb-4 py-3 fs-2 text-center">
+          Popular Collections
+        </h5>
         {dummyDta.map((item, i) => (
           <Col className="g-3 mb-3">
             <CustomCard item={item} />
