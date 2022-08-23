@@ -13,7 +13,7 @@ export const DefaultLayout = ({ children }) => {
       <TopNav />
       <MiddleNav />
       <BottomNav />
-      <hr />
+
       <main className="main">{children}</main>
 
       {/* footer */}

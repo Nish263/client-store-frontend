@@ -19,6 +19,9 @@ const cartSlice = createSlice({
       }
     },
   },
+  // setRemoveCartItem:(state, {payload})=>{
+
+  // }
 });
 
 const { reducer, actions } = cartSlice;
