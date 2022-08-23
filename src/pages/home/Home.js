@@ -8,7 +8,7 @@ import KidsHome from "./KidsHome";
 import MensHome from "./MensHome";
 import WomensHome from "./WomensHome";
 
-const Home = () => {
+const Home = ({ products }) => {
   return (
     <DefaultLayout>
       <HeroSection />

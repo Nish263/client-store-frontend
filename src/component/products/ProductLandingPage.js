@@ -3,32 +3,16 @@ import { DefaultLayout } from "../../Layout/DefaultLayout";
 import { Container } from "react-bootstrap";
 import { setAddToCartItem } from "../../pages/cart/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-const products = [
-  {
-    _id: "1",
-    title: "Saree",
-    src: [
-      "https://cdn.shopify.com/s/files/1/0876/3680/products/octavia_dress_red_5_1024x1024.jpg?v=1657846545",
-      "https://cdn.shopify.com/s/files/1/0876/3680/products/octavia_dress_black_9_1024x1024.jpg?v=1653462771",
-      " https://cdn.shopify.com/s/files/1/0876/3680/products/octavia_dress_white_7_1024x1024.jpg?v=1654652769",
-      "https://cdn.shopify.com/s/files/1/0876/3680/products/octavia_dress_pink_7_1024x1024.jpg?v=1653634782",
-    ],
-    description: "The siffon saree, available in different colour",
-    price: "$100",
-    colors: ["red", "pink", "green", "orange"],
-    count: 1,
-  },
-];
-
-const ProductLandingPage = () => {
+const ProductLandingPage = ({ products }) => {
   const [imageIndex, setImageIndex] = useState(0);
   // const [cart, setCart] = useState([]);
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.cart);
-  console.log(cart);
+
   const handleTabClick = (index) => {
     setImageIndex(index);
   };
@@ -41,10 +25,14 @@ const ProductLandingPage = () => {
   const handleOnAddToCart = (product) => {
     dispatch(setAddToCartItem(product));
   };
+
+  const { _id } = useParams();
+  const product = products.filter((item) => item._id === _id);
+  console.log(product);
   return (
     <DefaultLayout className="prodView">
       <Container>
-        {products.map((item) => (
+        {product.map((item) => (
           <div className="details" key={item._id}>
             <div className="big-img">
               <img src={item.src[imageIndex]} alt="" />
