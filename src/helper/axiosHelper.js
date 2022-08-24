@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const rootAPI = "https://fakestore.com";
-const productEP = rootAPI + "/products";
+const rootUrlAPI = "http://localhost:8000/api/v1";
+const productEP = rootUrlAPI + "/products";
 
 const apiProcessor = async ({ method, url }) => {
   try {
@@ -15,12 +15,7 @@ const apiProcessor = async ({ method, url }) => {
     console.log(message);
   }
 };
-export const getAllProducts = (async) => {
+export const getAllProducts = () => {
   const url = productEP;
-  return apiProcessor({ method: "get", url });
-};
-
-export const getProductById = async (id) => {
-  const url = productEP + "/" + "id";
   return apiProcessor({ method: "get", url });
 };

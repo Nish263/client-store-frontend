@@ -34,14 +34,6 @@ const dummydata = [
   },
 ];
 const KidClothing = () => {
-  const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
-  // const [allProducts, setAllProducts] = useState();
-
-  useEffect(() => {
-    dispatch(fetchProductAction());
-  }, [dispatch]);
-  console.log("all", products);
   return (
     <DefaultLayout>
       <Container>

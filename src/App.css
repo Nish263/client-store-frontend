@@ -18,6 +18,23 @@ h1 {
   color: rgb(242, 87, 123);
 }
 
+.cart-item {
+  position: relative;
+}
+.cart {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+
+  border-radius: 50%;
+  font-size: 0.8rem;
+  top: -10px;
+  right: -12px;
+  background-color: rgba(40, 174, 235, 0.94);
+  color: white;
+}
 .popular-image img {
   border-radius: 50%;
 }

@@ -5,13 +5,14 @@ import { setAddToCartItem } from "../../pages/cart/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const ProductLandingPage = ({ products }) => {
+const ProductLandingPage = () => {
   const [imageIndex, setImageIndex] = useState(0);
   // const [cart, setCart] = useState([]);
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
   const { cart } = useSelector((state) => state.cart);
+  const { products } = useSelector((state) => state.product);
 
   const handleTabClick = (index) => {
     setImageIndex(index);
@@ -28,28 +29,34 @@ const ProductLandingPage = ({ products }) => {
 
   const { _id } = useParams();
   const product = products.filter((item) => item._id === _id);
-  console.log(product);
+
   return (
     <DefaultLayout className="prodView">
       <Container>
         {product.map((item) => (
           <div className="details" key={item._id}>
             <div className="big-img">
-              <img src={item.src[imageIndex]} alt="" />
+              <img
+                src={`http://localhost:8001/${item.images[imageIndex].substr(
+                  7
+                )}`}
+                crossOrigin="anonymous"
+                alt=""
+              />
             </div>
             <div className="box">
               <div className="row">
-                <h2>{item.title}</h2>
+                <h2>{item.name}</h2>
                 <span>{item.price}</span>
               </div>
 
               <p>{item.description}</p>
-              <p>{item.content}</p>
 
               <div className="thumb">
-                {item.src.map((img, index) => (
+                {item.images.map((img, index) => (
                   <img
-                    src={img}
+                    src={`http://localhost:8001/${img.substr(7)}`}
+                    crossOrigin="anonymous"
                     className={index === imageIndex ? "active" : ""}
                     alt=""
                     key={index}
