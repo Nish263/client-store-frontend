@@ -6,6 +6,7 @@ import CustomCard from "../component/CustomCard";
 
 const AllProduct = () => {
   const { products } = useSelector((state) => state.product);
+
   console.log(products);
   return (
     <Container>
